@@ -10,10 +10,10 @@ import {
   MeshRefractionMaterial,
 } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
-import headphonesModel from "./assets/headphones1.glb";
+// import headphonesModel from "./assets/headphones1.glb";
 
 export default function Headphones(props) {
-  const { nodes, materials } = useGLTF(headphonesModel);
+  const { nodes, materials } = useGLTF(props.model);
   const modelRef = useRef();
 
   useFrame((state, delta) => {
@@ -114,4 +114,4 @@ export default function Headphones(props) {
   );
 }
 
-useGLTF.preload(headphonesModel);
+// useGLTF.preload(headphonesModel);

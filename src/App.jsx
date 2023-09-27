@@ -10,25 +10,16 @@ import {
 } from "@react-three/drei";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 import Headphones from "./Headphones";
-import sky from "./assets/sunset.hdr";
+// import sky from "./assets/sunset.hdr";
 
-const Scene = () => {
-  return (
-    <>
-      <Center rotation={[0, -0.8, 0]}>
-        <Headphones />
-      </Center>
-    </>
-  );
-};
-
-const App = () => {
+const App = (props) => {
   return (
     <Canvas shadows camera={{ fov: 70, position: [0, 0, 4] }}>
-      <color attach="background" args={["#f0f0f0"]} />
       <OrbitControls />
-      <Scene />
-      <Environment files={sky} resolution={256} blur={0.8}>
+      <Center rotation={[0, -0.8, 0]}>
+        <Headphones {...props} />
+      </Center>
+      <Environment files={props.env} resolution={256} blur={0.8}>
         <Lightformer
           intensity={4}
           rotation-x={Math.PI / 2}

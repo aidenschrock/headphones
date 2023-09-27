@@ -10,7 +10,11 @@
   </head>
 
   <body>
-    <div id="root"></div>
+    <div
+      id="root"
+      data-model="https://headphones-aidenschrock.vercel.app/headphones1.glb"
+      data-env="https://headphones-aidenschrock.vercel.app/sunset.hdr"
+    ></div>
     <script type="module" src="/src/index.jsx"></script>
     <style>
       * {
@@ -24,7 +28,7 @@
         height: 100%;
         margin: 0;
         padding: 0;
-        background-color: #272727;
+
         -webkit-touch-callout: none;
         -webkit-user-select: none;
         -khtml-user-select: none;
@@ -43,7 +47,7 @@
         overflow: hidden;
         overscroll-behavior-y: none;
         font-family: helvetica neue, helvetica, arial, sans-serif;
-        color: black;
+
         -webkit-font-smoothing: antialiased;
       }
     </style>
