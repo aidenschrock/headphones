@@ -15,25 +15,21 @@ import { MeshBasicMaterial } from "three";
 export default function Headphones(props) {
   const { nodes, materials } = useGLTF(props.model);
   const modelRef = useRef();
-  const blobRef = useRef();
-  const blobGroup = useRef();
-
-  useEffect(() => {
-    blobRef.current.geometry.computeBoundingBox();
-    // const boundingBox = blobRef.current.geometry.boundingBox;
-    // console.log(boundingBox)
-    // const center = boundingBox.getCenter();
-    // blobRef.current.geometry.translate(-center.x, -center.y, -center.z);
-  });
+  const blobsTop = useRef();
+  const blobsMid = useRef();
+  const blobsBack = useRef();
 
   useFrame((state, delta) => {
     // modelRef.current.rotation.y += 0.005;
-    blobRef.current.rotation.x += 0.02;
+    blobsBack.current.rotation.x += -0.01;
+    blobsMid.current.rotation.x += 0.02;
+    blobsTop.current.rotation.x += 0.03;
   });
 
   return (
     <group ref={modelRef} {...props} dispose={null}>
       <mesh
+        ref={blobsBack}
         name="blob-1"
         castShadow
         receiveShadow
@@ -41,9 +37,10 @@ export default function Headphones(props) {
         position={[-0.119, 0.007, -0.003]}
         scale={0.036}
       >
-        <meshBasicMaterial color="pink" />
+        <meshBasicMaterial color="#309fdb" />
       </mesh>
       <mesh
+        ref={blobsMid}
         name="blob-2"
         castShadow
         receiveShadow
@@ -51,17 +48,18 @@ export default function Headphones(props) {
         position={[0.07, 0.001, 0.003]}
         scale={0.058}
       >
-        <meshBasicMaterial color="blue" />
+        <meshBasicMaterial color="#00F0FF" />
       </mesh>
       <mesh
+        ref={blobsTop}
         name="blob-3"
         castShadow
         receiveShadow
         geometry={nodes["blob-3"].geometry}
         position={[0.144, 0.021, 0.061]}
-        scale={0.03}
+        scale={0.025}
       >
-        <meshBasicMaterial color="yellow" />
+        <meshBasicMaterial color="#4900C0" />
       </mesh>
       <mesh
         name="base"
@@ -82,11 +80,11 @@ export default function Headphones(props) {
         scale={[-1, -0.196, -1]}
       >
         <MeshTransmissionMaterial
-          thickness={0.5}
+          thickness={0.25}
           chromaticAberration={0.05}
           anisotropy={1}
-          clearcoat={0.5}
-          clearcoatRoughness={0.2}
+          clearcoat={0.2}
+          clearcoatRoughness={0.1}
           envMapIntensity={1}
         />
       </mesh>

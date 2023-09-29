@@ -25,6 +25,7 @@ const App = (props) => {
           rotation-x={Math.PI / 2}
           position={[0, 5, -9]}
           scale={[10, 10, 1]}
+          color="#309fdb"
         />
         <group rotation={[Math.PI / 2, 1, 0]}>
           <Lightformer
@@ -32,6 +33,7 @@ const App = (props) => {
             rotation-y={Math.PI / 2}
             position={[-5, 1, -1]}
             scale={[50, 2, 1]}
+            color="#309fdb"
           />
 
           <Lightformer
@@ -39,13 +41,14 @@ const App = (props) => {
             rotation-y={-Math.PI / 2}
             position={[10, 1, 0]}
             scale={[50, 2, 1]}
+            color="#309fdb"
           />
         </group>
         <group>
           <Lightformer
             intensity={5}
             form="ring"
-            color="#35d1fc"
+            color="#309fdb"
             rotation-y={Math.PI / 2}
             position={[-5, 2, -1]}
             scale={[10, 10, 1]}
