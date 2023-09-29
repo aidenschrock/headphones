@@ -13,13 +13,10 @@ import { useFrame } from "@react-three/fiber";
 import { MeshBasicMaterial } from "three";
 
 export default function Headphones(props) {
-
   const { nodes, materials } = useGLTF(props.model);
   const modelRef = useRef();
   const blobRef = useRef();
   const blobGroup = useRef();
-
-
 
   useEffect(() => {
     blobRef.current.geometry.computeBoundingBox();
@@ -27,9 +24,7 @@ export default function Headphones(props) {
     // console.log(boundingBox)
     // const center = boundingBox.getCenter();
     // blobRef.current.geometry.translate(-center.x, -center.y, -center.z);
-
-
-  })
+  });
 
   useFrame((state, delta) => {
     // modelRef.current.rotation.y += 0.005;
@@ -38,6 +33,36 @@ export default function Headphones(props) {
 
   return (
     <group ref={modelRef} {...props} dispose={null}>
+      <mesh
+        name="blob-1"
+        castShadow
+        receiveShadow
+        geometry={nodes["blob-1"].geometry}
+        position={[-0.119, 0.007, -0.003]}
+        scale={0.036}
+      >
+        <meshBasicMaterial color="pink" />
+      </mesh>
+      <mesh
+        name="blob-2"
+        castShadow
+        receiveShadow
+        geometry={nodes["blob-2"].geometry}
+        position={[0.07, 0.001, 0.003]}
+        scale={0.058}
+      >
+        <meshBasicMaterial color="blue" />
+      </mesh>
+      <mesh
+        name="blob-3"
+        castShadow
+        receiveShadow
+        geometry={nodes["blob-3"].geometry}
+        position={[0.144, 0.021, 0.061]}
+        scale={0.03}
+      >
+        <meshBasicMaterial color="yellow" />
+      </mesh>
       <mesh
         name="base"
         castShadow
@@ -96,18 +121,6 @@ export default function Headphones(props) {
         rotation={[0, 0, -Math.PI / 2]}
         scale={[0.833, 1.039, 0.833]}
       ></mesh>
-
-      <mesh
-        name="blobs"
-        ref={blobRef}
-        castShadow
-        receiveShadow
-        geometry={nodes.blobs.geometry}
-        position={[0, 0, 0.02]}
-        scale={0.14}
-      >
-        <meshBasicMaterial color="pink" />
-      </mesh>
     </group>
   );
 }
