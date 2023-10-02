@@ -11,7 +11,7 @@ import {
 import Headphones from "./Headphones";
 
 const App = (props) => {
-  const [width, setWidth] = useState < number > window.innerWidth;
+  const [width, setWidth] = useState(window.innerWidth);
 
   function handleWindowSizeChange() {
     setWidth(window.innerWidth);
