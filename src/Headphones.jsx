@@ -34,57 +34,6 @@ export default function Headphones(props) {
 
   return (
     <group ref={modelRef} {...props} dispose={null}>
-      {/* <mesh
-        ref={blobsBack}
-        name="blob-1"
-        castShadow
-        receiveShadow
-        geometry={nodes["blob-1"].geometry}
-        position={[-0.119, 0.007, -0.003]}
-        scale={0.036}
-      >
-        <meshBasicMaterial color="#309fdb" />
-      </mesh>
-      <mesh
-        ref={blobsMid}
-        name="blob-2"
-        castShadow
-        receiveShadow
-        geometry={nodes["blob-2"].geometry}
-        position={[0.07, 0.001, 0.003]}
-        scale={0.058}
-      >
-        <meshBasicMaterial color="#00F0FF" />
-      </mesh>
-      <mesh
-        ref={blobsTop}
-        name="blob-3"
-        castShadow
-        receiveShadow
-        geometry={nodes["blob-3"].geometry}
-        position={[0.144, 0.021, 0.061]}
-        scale={0.025}
-      >
-        <meshBasicMaterial color="#4900C0" />
-      </mesh> */}
-      {/* 
-      <mesh
-        name="glass"
-        castShadow
-        receiveShadow
-        geometry={nodes.glass.geometry}
-        rotation={[-Math.PI, 0, -Math.PI / 2]}
-        scale={[-1, -0.196, -1]}
-      >
-        <MeshTransmissionMaterial
-          thickness={0.25}
-          chromaticAberration={0.05}
-          anisotropy={1}
-          clearcoat={0.2}
-          clearcoatRoughness={0.1}
-          envMapIntensity={1}
-        />
-      </mesh> */}
       <mesh
         name="strap"
         castShadow
