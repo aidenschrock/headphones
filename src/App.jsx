@@ -18,9 +18,10 @@ const App = (props) => {
         maxAzimuthAngle={0.5}
         minPolarAngle={1.4}
         maxPolarAngle={1.8}
+        enableZoom={false}
       />
       <Center rotation={[0, -1, 0]}>
-        <Float>
+        <Float floatIntensity={2}>
           <Headphones {...props} />
         </Float>
       </Center>
