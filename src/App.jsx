@@ -6,15 +6,23 @@ import {
   OrbitControls,
   Lightformer,
   Center,
+  Float,
 } from "@react-three/drei";
 import Headphones from "./Headphones";
 
 const App = (props) => {
   return (
     <Canvas shadows camera={{ fov: 70, position: [0, 0, 5] }}>
-      <OrbitControls />
-      <Center rotation={[0, -0.8, 0]}>
-        <Headphones {...props} />
+      <OrbitControls
+        minAzimuthAngle={-2}
+        maxAzimuthAngle={0.5}
+        minPolarAngle={1.4}
+        maxPolarAngle={1.8}
+      />
+      <Center rotation={[0, -1, 0]}>
+        <Float>
+          <Headphones {...props} />
+        </Float>
       </Center>
       <Environment files={props.env} resolution={256} blur={0.8}>
         <Lightformer
