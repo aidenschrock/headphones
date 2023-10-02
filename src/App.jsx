@@ -20,7 +20,7 @@ const App = (props) => {
         <Headphones {...props} />
       </Center>
       <Environment files={props.env} resolution={256} blur={0.8}>
-        <Lightformer
+        {/* <Lightformer
           intensity={4}
           rotation-x={Math.PI / 2}
           position={[0, 5, -9]}
@@ -53,7 +53,7 @@ const App = (props) => {
             position={[-5, 2, -1]}
             scale={[10, 10, 1]}
           />
-        </group>
+        </group> */}
       </Environment>
     </Canvas>
   );

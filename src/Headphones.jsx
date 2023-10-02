@@ -18,17 +18,23 @@ export default function Headphones(props) {
   const blobsTop = useRef();
   const blobsMid = useRef();
   const blobsBack = useRef();
+  const blobsTopL = useRef();
+  const blobsMidL = useRef();
+  const blobsBackL = useRef();
 
   useFrame((state, delta) => {
     // modelRef.current.rotation.y += 0.005;
     blobsBack.current.rotation.x += -0.01;
-    blobsMid.current.rotation.x += 0.02;
-    blobsTop.current.rotation.x += 0.03;
+    blobsMid.current.rotation.x += 0.01;
+    blobsTop.current.rotation.x += 0.01;
+    blobsBackL.current.rotation.x += -0.01;
+    blobsMidL.current.rotation.x += 0.01;
+    blobsTopL.current.rotation.x += 0.01;
   });
 
   return (
     <group ref={modelRef} {...props} dispose={null}>
-      <mesh
+      {/* <mesh
         ref={blobsBack}
         name="blob-1"
         castShadow
@@ -60,17 +66,8 @@ export default function Headphones(props) {
         scale={0.025}
       >
         <meshBasicMaterial color="#4900C0" />
-      </mesh>
-      <mesh
-        name="base"
-        castShadow
-        receiveShadow
-        geometry={nodes.base.geometry}
-        material={materials["Material.001"]}
-        position={[-0.025, 1.077, 0]}
-        scale={[0.164, 0.15, 0.369]}
-      />
-
+      </mesh> */}
+      {/* 
       <mesh
         name="glass"
         castShadow
@@ -87,17 +84,55 @@ export default function Headphones(props) {
           clearcoatRoughness={0.1}
           envMapIntensity={1}
         />
+      </mesh> */}
+      <mesh
+        name="strap"
+        castShadow
+        receiveShadow
+        material={materials["Material.001"]}
+        geometry={nodes.Cube.geometry}
+        position={[0, 2.899, 0]}
+      >
+        {/* <meshBasicMaterial color="black" /> */}
       </mesh>
-
+      <mesh
+        name="base"
+        castShadow
+        receiveShadow
+        geometry={nodes.base.geometry}
+        material={materials["Material.001"]}
+        position={[1.83, 1.077, -0.014]}
+      />
+      <mesh
+        name="glass"
+        castShadow
+        receiveShadow
+        geometry={nodes.glass.geometry}
+        position={[1.855, 0, -0.014]}
+        rotation={[0, 0, -Math.PI / 2]}
+      >
+        <MeshTransmissionMaterial
+          thickness={0.5}
+          chromaticAberration={1}
+          anisotropy={1}
+          clearcoat={1}
+          clearcoatRoughness={0}
+          envMapIntensity={2}
+          iridescence={1}
+          ior={2}
+          sheenColor="white"
+          sheen={1}
+          transmission={0.8}
+        />
+      </mesh>
       <mesh
         name="cushion"
         castShadow
         receiveShadow
         geometry={nodes.cushion.geometry}
         material={materials.Material}
-        position={[-0.515, 0, 0.008]}
+        position={[1.248, 0, -0.005]}
         rotation={[Math.PI / 2, 0, -Math.PI / 2]}
-        scale={[0.554, 0.474, 0.554]}
       />
       <mesh
         name="base-extend"
@@ -105,9 +140,8 @@ export default function Headphones(props) {
         receiveShadow
         geometry={nodes["base-extend"].geometry}
         material={materials["Material.001"]}
-        position={[-0.076, 1.575, 0]}
+        position={[1.779, 1.575, -0.014]}
         rotation={[0, 0, 0.214]}
-        scale={[-0.093, -0.423, -0.199]}
       />
       <mesh
         name="circle"
@@ -115,10 +149,138 @@ export default function Headphones(props) {
         receiveShadow
         geometry={nodes.circle.geometry}
         material={materials["Material.001"]}
-        position={[-0.212, 0, 0]}
+        position={[1.643, 0, -0.014]}
         rotation={[0, 0, -Math.PI / 2]}
-        scale={[0.833, 1.039, 0.833]}
-      ></mesh>
+      />
+      <mesh
+        ref={blobsBack}
+        name="blob-1"
+        castShadow
+        receiveShadow
+        geometry={nodes["blob-1"].geometry}
+        material={nodes["blob-1"].material}
+        position={[1.736, 0.007, -0.017]}
+      >
+        <meshNormalMaterial />
+      </mesh>
+      <mesh
+        ref={blobsMid}
+        name="blob-2"
+        castShadow
+        receiveShadow
+        geometry={nodes["blob-2"].geometry}
+        material={nodes["blob-2"].material}
+        position={[1.925, 0.001, -0.011]}
+      >
+        <meshNormalMaterial />
+      </mesh>
+      <mesh
+        ref={blobsTop}
+        name="blob-3"
+        castShadow
+        receiveShadow
+        geometry={nodes["blob-3"].geometry}
+        material={nodes["blob-3"].material}
+        position={[1.999, 0.021, 0.047]}
+        scale={0.8}
+      >
+        <meshNormalMaterial />
+      </mesh>
+      <mesh
+        name="base-l"
+        castShadow
+        receiveShadow
+        geometry={nodes["base-l"].geometry}
+        material={materials["Material.003"]}
+        position={[-1.833, 1.077, 0.002]}
+        rotation={[-Math.PI, 0, -Math.PI]}
+      />
+      <mesh
+        name="base-extend-l"
+        castShadow
+        receiveShadow
+        geometry={nodes["base-extend-l"].geometry}
+        material={materials["Material.003"]}
+        position={[-1.782, 1.575, 0.002]}
+        rotation={[Math.PI, 0, -2.928]}
+      />
+      <mesh
+        ref={blobsBackL}
+        name="blob-1-l"
+        castShadow
+        receiveShadow
+        geometry={nodes["blob-1-l"].geometry}
+        material={nodes["blob-1-l"].material}
+        position={[-1.74, 0.007, 0.005]}
+        rotation={[-Math.PI, 0, -Math.PI]}
+      >
+        <meshNormalMaterial />
+      </mesh>
+      <mesh
+        ref={blobsMidL}
+        name="blob-2-l"
+        castShadow
+        receiveShadow
+        geometry={nodes["blob-2-l"].geometry}
+        material={nodes["blob-2-l"].material}
+        position={[-1.928, 0.001, -0.001]}
+        rotation={[-Math.PI, 0, -Math.PI]}
+      >
+        <meshNormalMaterial />
+      </mesh>
+      <mesh
+        ref={blobsTopL}
+        name="blob-3-l"
+        castShadow
+        receiveShadow
+        geometry={nodes["blob-3-l"].geometry}
+        material={nodes["blob-3-l"].material}
+        position={[-2.002, 0.021, -0.059]}
+        rotation={[-Math.PI, 0, -Math.PI]}
+        scale={0.8}
+      >
+        <meshNormalMaterial />
+      </mesh>
+      <mesh
+        name="circle-l"
+        castShadow
+        receiveShadow
+        geometry={nodes["circle-l"].geometry}
+        material={materials["Material.003"]}
+        position={[-1.646, 0, 0.002]}
+        rotation={[-Math.PI, 0, Math.PI / 2]}
+      />
+      <mesh
+        name="cushion-l"
+        castShadow
+        receiveShadow
+        geometry={nodes["cushion-l"].geometry}
+        material={materials["Material.002"]}
+        position={[-1.251, 0, -0.007]}
+        rotation={[Math.PI / 2, 0, Math.PI / 2]}
+      />
+      <mesh
+        name="glass-l"
+        castShadow
+        receiveShadow
+        geometry={nodes["glass-l"].geometry}
+        position={[-1.859, 0, 0.002]}
+        rotation={[-Math.PI, 0, Math.PI / 2]}
+      >
+        <MeshTransmissionMaterial
+          thickness={0.5}
+          chromaticAberration={1}
+          anisotropy={1}
+          clearcoat={1}
+          clearcoatRoughness={0}
+          envMapIntensity={2}
+          iridescence={1}
+          ior={2}
+          sheenColor="white"
+          sheen={1}
+          transmission={0.8}
+        />
+      </mesh>
     </group>
   );
 }
