@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Canvas } from "@react-three/fiber";
 import {
   Box,
@@ -11,15 +11,32 @@ import {
 import Headphones from "./Headphones";
 
 const App = (props) => {
+  const [width, setWidth] = useState < number > window.innerWidth;
+
+  function handleWindowSizeChange() {
+    setWidth(window.innerWidth);
+  }
+  useEffect(() => {
+    window.addEventListener("resize", handleWindowSizeChange);
+    return () => {
+      window.removeEventListener("resize", handleWindowSizeChange);
+    };
+  }, []);
+
+  const isMobile = width <= 768;
+
   return (
     <Canvas shadows camera={{ fov: 70, position: [0, 0, 5] }}>
-      <OrbitControls
-        minAzimuthAngle={-2}
-        maxAzimuthAngle={0.5}
-        minPolarAngle={1.4}
-        maxPolarAngle={1.8}
-        enableZoom={false}
-      />
+      {isMobile ? null : (
+        <OrbitControls
+          minAzimuthAngle={-2}
+          maxAzimuthAngle={0.5}
+          minPolarAngle={1.4}
+          maxPolarAngle={1.8}
+          enableZoom={false}
+        />
+      )}
+
       <Center rotation={[0, -1, 0]}>
         <Float floatIntensity={2}>
           <Headphones {...props} />
